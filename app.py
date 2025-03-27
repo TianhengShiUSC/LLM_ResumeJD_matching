@@ -5,6 +5,8 @@ import os
 import PyPDF2 as pdf
 from dotenv import load_dotenv
 import json
+from preprocess import LLMDataPreprocessor
+UNDER_DEVELOP = True
 
 load_dotenv() ## load all our environment variables
 
@@ -72,6 +74,23 @@ if submit:
     if uploaded_file is not None and jd:
         text = input_pdf_text(uploaded_file)
         formatted_prompt = input_prompt.format(text=text, jd=jd)
+
+        if UNDER_DEVELOP:
+            resume_text = input_pdf_text(uploaded_file)
+
+            # Create instance of LLM preprocessor
+            api_key = "AIzaSyAn8g2wYgTrjfW52LrlhR6V37tDewRsO9g"
+            processor = LLMDataPreprocessor(jd_text=jd, resume_text=resume_text, api_key=api_key)
+            processor.process()
+            jd_features, resume_features = processor.get_features()
+
+            # Display extracted features on web
+            st.subheader("📄 Extracted Job Description Features")
+            st.json(jd_features)
+
+            st.subheader("👤 Extracted Resume Features")
+            st.json(resume_features)
+
         response = get_gemini_repsonse(formatted_prompt)
         st.subheader("Gemini's Analysis")
         st.write(response)
