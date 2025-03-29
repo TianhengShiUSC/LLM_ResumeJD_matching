@@ -3,3 +3,4 @@ PyPDF2==3.0.1
 google.generativeai
 python-dotenv
 streamlit_extras
+sentence-transformers
