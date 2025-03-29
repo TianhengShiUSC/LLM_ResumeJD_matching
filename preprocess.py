@@ -33,7 +33,7 @@ class LLMDataPreprocessor:
 
         - Company name
         - Job title
-        - Required skills (as a list)
+        - Required skills (as a list, use keywords-like format)
         - Job responsibilities (as a paragraph)
 
         Job Description:
@@ -60,7 +60,7 @@ class LLMDataPreprocessor:
         - School name
         - GPA (if available)
         - Research area (if mentioned)
-        - Technical skills (as a list)
+        - Technical skills (as a list, dont simply check skills section, check experience to get the skills as well)
 
         Resume:
         """
