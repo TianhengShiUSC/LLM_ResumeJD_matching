@@ -1,71 +1,144 @@
-# Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro
-## Overview
-Welcome to the Gemini Pro Applicant Tracking System (ATS)! This system is developed using the powerful Gemini Pro model to streamline the hiring process by analyzing job descriptions and resumes. It provides valuable insights such as job description match, missing keywords, and profile summary.
+# Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro (Forked & Enhanced)
 
-## Demo of the project
-https://github.com/praj2408/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro/assets/70437673/56d043c4-bc02-4c16-bd85-fe2d3d909d8c
+## 🚀 Overview
 
-## Features
-- **Job Description Match:** The system evaluates how well a candidate's resume matches the provided job description, helping recruiters quickly identify suitable candidates.
+This is a customized fork of the original [Gemini Pro ATS project](https://github.com/praj2408/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro), enhanced with structured information extraction, cosine similarity scoring, visa sponsorship estimation, and offline CLI support.
 
-- **Missing Keywords:** It identifies keywords or skills that are missing in the resume but are crucial for the job, enabling recruiters to guide candidates on enhancing their profiles.
+---
 
-- **Profile Summary:** The system generates a concise profile summary highlighting key strengths and qualifications, facilitating a quick understanding of the candidate's suitability for the position.
+## ✨ Features Added in This Fork
 
-## Requirements
-- Python 3.10
-- Gemini Pro model api key (Note: Ensure you have the necessary credentials and permissions to access the Gemini Pro API)
+- ✅ LLM-based structured feature extraction (skills, GPA, school, responsibilities, etc.)
+- ✅ Dual similarity scores: full-text + structured features
+- ✅ Visa sponsorship assessment (explicit + heuristic-based)
+- ✅ Offline command-line support with `app_offline.py`
+- ✅ JSON output saved in `./output/`
+- ✅ Batch processing via `run_batch.sh` script
 
-## Installation
-1. Clone the repository:
+---
+
+## 📦 Requirements
+
+- Python 3.10+
+- Dependencies listed in `requirements.txt`
+- Google Gemini Pro API key (via [Makersuite](https://makersuite.google.com/))
+
+---
+
+## ⚙️ Installation
+
 ```bash
-git clone https://github.com/praj2408/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro/
-```
+git clone https://github.com/<your-username>/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro
+cd End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro
 
-2. Install dependencies:
-```bash
+python3 -m venv venv
+source venv/bin/activate
+
 pip install -r requirements.txt
 ```
 
-3. Set up Gemini Pro API credentials:
- - Obtain API credentials from the makersuit platform.
+---
 
- - Create a file named .env in the project root directory.
+## 🔐 API Key Setup
 
- - Add the following lines to .env:
-   ```bash
-   GOOGLE_API_KEY= "your_api_key"
-   ```
+Create a `.env` file in the root directory:
 
-## Usage
-1. Run the application:
+```env
+GEMINI_API_KEY=your_google_api_key
+```
+
+---
+
+## 🖥️ Run Web App (Optional)
+
 ```bash
 streamlit run app.py
 ```
-2. Access the application through your web browser at http://localhost:5000.
 
-3. Input the job description and candidate's resume in the provided fields.
+Open your browser at: http://localhost:8501
 
-4. Click the "Submit" button to initiate the analysis.
+---
 
-5. Review the results, including the job description match, missing keywords, and profile summary.
+## ⚙️ Run Offline Inference
+
+```bash
+python app_offline.py --jd /abs/path/to/jd.txt --resume /abs/path/to/resume.pdf
+```
+
+Gemini will:
+- Extract structured info
+- Compute two cosine similarity scores
+- Return a JSON-style evaluation
+- Save to `./output/<jd>_<resume>.json`
+
+---
+
+## 📁 Output Example
+
+```json
+{
+  "response": {
+    "JD Match": "87%",
+    "MissingKeywords": ["pytorch", "docker"],
+    "Profile Summary": "...",
+    "VisaSponsorshipAssessment": {
+      "explicit_mention_in_jd": "no",
+      "estimated_likelihood": "High",
+      "reasoning": "Google usually sponsors interns in research/tech roles."
+    }
+  },
+  "jd_features": { ... },
+  "resume_features": { ... },
+  "text_similarity": 0.87,
+  "structured_similarity": 0.78
+}
+```
+
+---
+
+## 📂 Run Batch Inference
+
+Create a `batch_input.txt` file like:
+
+```
+/path/to/jd1.txt /path/to/resume1.pdf T
+/path/to/jd2.txt /path/to/resume2.pdf F
+```
+
+Run:
+
+```bash
+bash run_batch.sh batch_input.txt
+```
+
+---
+
+## 📦 Ignored Files/Folders
+
+This repo excludes the following folders from git tracking:
+
+```
+dummy_data/
+output/
+.env
+```
+
+---
+
+## 🙏 Credits
+
+Forked from [Prajwal Krishna’s original project](https://github.com/praj2408/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro)
+
+---
+
+## 📝 License
+
+MIT License
+
+---
+
+## 👤 Maintainer
+
+Tianheng Shi  tshi9875@usc.edu
 
 
-## Contributing
-If you would like to contribute to this project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and submit a pull request.
-
-
-## License
-This project is licensed under the MIT License.
-
-## Contact
-If you have any questions or issues, feel free to reach out to the maintainers:
-
-Maintainer: Prajwal Krishna
-Email: prajwalgbdr03@gmail.com
-
-Happy recruiting with Gemini Pro ATS!
