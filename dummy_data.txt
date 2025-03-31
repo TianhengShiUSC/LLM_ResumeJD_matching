@@ -1,1 +1,3 @@
-/Users/tianhengshi/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro/dummy_data/JD/google.txt /Users/tianhengshi/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro/dummy_data/resume/Resume_Tianheng_Shi.pdf T
+data_folder/JD/JD5.txt data_folder/resume/resume12.pdf True
+data_folder/JD/JD5.txt data_folder/resume/resume199.pdf True
+data_folder/JD/JD5.txt data_folder/resume/resume431.pdf False

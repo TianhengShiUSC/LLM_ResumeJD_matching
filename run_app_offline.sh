@@ -1,24 +1,35 @@
 #!/bin/bash
 
-# Path to input file (first argument to script)
 INPUT_FILE="$1"
 
-# Check if file exists
+# 🛑 Check if input file exists
 if [[ ! -f "$INPUT_FILE" ]]; then
   echo "❌ Input file not found: $INPUT_FILE"
   exit 1
 fi
 
-# Loop through each line in the input file
+# ✅ List of API keys (add or remove as needed)
+API_KEYS=(
+  "AIzaSyAn8g2wYgTrjfW52LrlhR6V37tDewRsO9g"
+  "AIzaSyCqhPd6wk9WsphB3iAH5C1DlZ21ExKkKFY"
+  "AIzaSyAMyzQFM2tqgD2irOvlFy0yCXznitBzx3Q"
+)
+
+NUM_KEYS=${#API_KEYS[@]}
+COUNTER=0
+
+# 📦 Process each line
 while IFS= read -r line || [[ -n "$line" ]]; do
-  # Split line into parts
   jd_path=$(echo "$line" | awk '{print $1}')
   resume_path=$(echo "$line" | awk '{print $2}')
   label=$(echo "$line" | awk '{print $3}')
 
-  echo "▶️ Processing JD: $jd_path | Resume: $resume_path | Label: $label"
+  current_key=${API_KEYS[$((COUNTER % NUM_KEYS))]}
 
-  # Run Python script
-  python app_offline.py --jd "$jd_path" --resume "$resume_path"
+  echo "▶️ [$COUNTER] Processing JD: $jd_path | Resume: $resume_path | Using Key: ${current_key:0:10}..."
+
+  python app_offline.py --jd "$jd_path" --resume "$resume_path" --api_key "$current_key"
+
+  ((COUNTER++))
 
 done < "$INPUT_FILE"

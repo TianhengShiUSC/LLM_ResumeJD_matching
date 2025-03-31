@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 dummy_data/
 output/
+data_folder/

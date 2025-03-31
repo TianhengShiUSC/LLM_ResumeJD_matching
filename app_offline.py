@@ -11,8 +11,10 @@ from similiarityGenerator import SimilarityScorer
 load_dotenv()
 
 # Configure Gemini
-api_key = os.getenv("GEMINI_API_KEY") or "AIzaSyAn8g2wYgTrjfW52LrlhR6V37tDewRsO9g"
-genai.configure(api_key=api_key)
+# api_key = os.getenv("GEMINI_API_KEY") or "AIzaSyAn8g2wYgTrjfW52LrlhR6V37tDewRsO9g"
+# api_key = "AIzaSyCqhPd6wk9WsphB3iAH5C1DlZ21ExKkKFY"
+# api_key = "AIzaSyAMyzQFM2tqgD2irOvlFy0yCXznitBzx3Q"
+# genai.configure(api_key=api_key)
 
 # Prompt Template
 input_prompt = """
@@ -73,7 +75,8 @@ def save_output(jd_path, resume_path, output_data):
         json.dump(output_data, f, indent=2, ensure_ascii=False)
     print(f"\n✅ Saved output to {output_file}\n")
 
-def main(jd_path, resume_path):
+def main(jd_path, resume_path, api_key):
+    genai.configure(api_key=api_key)
     with open(jd_path, 'r', encoding='utf-8') as f:
         jd_text = f.read()
 
@@ -123,5 +126,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Offline ATS Resume Evaluator with Gemini")
     parser.add_argument("--jd", required=True, help="Absolute path to job description .txt file")
     parser.add_argument("--resume", required=True, help="Absolute path to resume .pdf file")
+    parser.add_argument("--api_key", required=True, help="Gemini API key")
     args = parser.parse_args()
-    main(args.jd, args.resume)
+    main(args.jd, args.resume, args.api_key)
