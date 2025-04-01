@@ -13,6 +13,7 @@ API_KEYS=(
   "AIzaSyAn8g2wYgTrjfW52LrlhR6V37tDewRsO9g"
   "AIzaSyCqhPd6wk9WsphB3iAH5C1DlZ21ExKkKFY"
   "AIzaSyAMyzQFM2tqgD2irOvlFy0yCXznitBzx3Q"
+  "AIzaSyADBstQ9m7ZX-JOCSJBKy82S_24FIy0StQ"
 )
 
 NUM_KEYS=${#API_KEYS[@]}
