@@ -1,7 +1,7 @@
 import os
 
 # Path to the input text file and output JSON directory
-input_file = 'pairs_labels_sample.txt'
+input_file = 'ranking.txt'
 output_dir = 'output'  # Adjust this to your actual output directory
 
 # Read all lines from pairs_labels_sample.txt
@@ -31,12 +31,12 @@ else:
 
 print("Number of missing jsons:", count)
 
-# Read the lines from pairs_labels_sample.txt
-input_file = 'pairs_labels_sample.txt'
+# Read the lines from ranking.txt
+input_file = 'ranking.txt'
 with open(input_file, 'r') as f:
     lines = f.readlines()
 
-# Create a mapping of filenames to their line index in pairs_labels_sample.txt
+# Create a mapping of filenames to their line index in ranking.txt
 line_to_filename = {
     f"{line.split()[0].split('/')[-1].replace('.txt', '')}_{line.split()[1].split('/')[-1].replace('.pdf', '')}.json": index
     for index, line in enumerate(lines)

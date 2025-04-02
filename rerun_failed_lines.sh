@@ -29,7 +29,6 @@ for line_number in $failed_lines; do
   line=$(awk "NR==$line_number" "$INPUT_FILE")
   jd_path=$(echo "$line" | awk '{print $1}')
   resume_path=$(echo "$line" | awk '{print $2}')
-  label=$(echo "$line" | awk '{print $3}')
 
   # Use the API key based on the counter, cycling through the keys
   current_key=${API_KEYS[$key_counter]}
