@@ -1,0 +1,63 @@
+# Ground truth (My manual ranking):
+
+# JD33 = software engineer
+JD33 (Software Engineer in web development): 
+resume1693 10 (No full-time experience, no SWE experience)
+resume1697 7  (No fulltime experience, no SWE experience)
+resume1698 6  (No web development, only an assistant)
+resume1699 8  (No software development experience, but has full-time experience)
+resume1700 5  (No SWE experience, but was manager)
+resume1701 9  (No professional experience, but is military veteran)
+resume1710 3  (Strong programming skills in full-stack, no SWE experience only intern experience)
+resume1713 4  (Limited web experince, but was manager)
+resume1745 1  (Most experienced 20+ years, leadership experience)
+resume1747 2  (Same experience as #1 but no Java and CI/CD)
+
+# JD55 = sales
+JD55 (Sales): 
+resume968 6 (No fintech or B2B sales exp)
+resume1000 2 (17+ years experience, less fintech exp)
+resume1002 8 (No exp at all)
+resume1011 1 (20+ years experience)
+resume1025 4 (More focused on digital sales instead of fintech)
+resume1037 7 (No fintech exp)
+resume1051 9 (No exp and alignment in fintech)
+resume1073 10 (No exp and alignment in fintech at all)
+resume1083 5 (Less sales exp, but exp in client-facing operations)
+resume1101 3 (Less exp in general, less fintech exp)
+
+# JD57 = account executive
+resume1824 1 (Aligned experiences)
+resume1828 2 (Aligned exp)
+resume1830 6 (No exp in B2B sales)
+resume1838 3 (No sales exp, but exp in structure)
+resume1851 5 (Limited exp)
+resume1865 10 (Completely irrelevant)
+resume1878 4 (Exp in compliance instead of sales)
+resume1880 9 (No sales exp)
+resume1891 8 (No sales or telecom exp)
+resume1910 7 (No sales transactional exp)
+
+# JD264 = talent acquisition specialist  recruiter
+resume1 6 (Exp in prescreening for candidates)
+resume2 5 (Leadership exp, 20+ years exp)
+resume3 10 (No recruiting exp)
+resume4 1 (Manager exp, many collabs with business leaders)
+resume5 9 (Little exp in recruiting)
+resume6 7 (Manager exp, no direct exp with candidates)
+resume7 2 (Manage exp, a bit less collabs with business leaders)
+resume8 3 (Exp in full cycle recruiting)
+resume9 8 (Some recruiting exp)
+resume10 4 (Exp in finding/assisting candidates)
+
+# JD489 = nursing assistant
+resume551 5 (No nursing exp)
+resume690 4 (Only exp in children)
+resume692 1 (Most experienced nurse for home/hospital)
+resume694 6 (No patient care exp)
+resume695 10 (Completely irrelevant to JD)
+resume696 2 (Less experience in hospital)
+resume698 7 (No nurse or mental health exp)
+resume699 8 (Overqualified and no nurse exp)
+resume700 9 (Irrelevant exp)
+resume720 3 (Less clinical exp)
