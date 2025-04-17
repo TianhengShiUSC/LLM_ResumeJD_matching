@@ -33,7 +33,8 @@ class LLMDataPreprocessor:
 
         - Company name
         - Job title
-        - Required skills (as a list, use keywords-like format)
+        - Job Level(one of the following: entry-level, senior-level, management-level)
+        - Required skills (as a list, use keywords-like format, exclude work condition(such as "must have computer"))
         - Job responsibilities (as a paragraph)
 
         Job Description:
@@ -60,6 +61,7 @@ class LLMDataPreprocessor:
         - School name
         - GPA (if available)
         - Research area (if mentioned)
+        - Job Level(one of the following: entry-level, senior-level, management-level) based on the exprience and skill.
         - Technical skills (as a list, dont simply check skills section, check experience to get the skills as well)
 
         Resume:
@@ -73,6 +75,7 @@ class LLMDataPreprocessor:
           "school": "",
           "gpa": "",
           "research_area": "",
+          "Job Level": "",
           "skills": []
         }
         """
