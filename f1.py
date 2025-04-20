@@ -6,7 +6,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description="Evaluate prediction results")
 parser.add_argument('--mode', choices=['baseline', 'full'], required=True, help="Evaluation mode")
-parser.add_argument('--label_file', default='pairs_labels_sample.txt', help="Path to label file")
+parser.add_argument('--label_file', default='pairs_labels_manual.txt', help="Path to label file")
 args = parser.parse_args()
 
 # Mode-based config
@@ -14,7 +14,7 @@ if args.mode == 'baseline':
     output_folder = 'output_baseline/'
     json_pattern = "{jd}_{resume}_baseline.json"
 else:
-    output_folder = 'output/'
+    output_folder = 'output_with_no_major/'
     json_pattern = "{jd}_{resume}.json"
 
 # Load available JSON filenames into a set for quick lookup

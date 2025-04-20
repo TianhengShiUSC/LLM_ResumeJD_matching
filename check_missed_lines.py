@@ -1,7 +1,7 @@
 import os
 
 # Path to the input text file and output JSON directory
-input_file = 'ranking.txt'
+input_file = '/Users/tianhengshi/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro/pairs_labels_sample.txt'
 output_dir = 'output'  # Adjust this to your actual output directory
 
 # Read all lines from pairs_labels_sample.txt
@@ -32,7 +32,7 @@ else:
 print("Number of missing jsons:", count)
 
 # Read the lines from ranking.txt
-input_file = 'ranking.txt'
+input_file = '/Users/tianhengshi/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro/pairs_labels_sample.txt'
 with open(input_file, 'r') as f:
     lines = f.readlines()
 

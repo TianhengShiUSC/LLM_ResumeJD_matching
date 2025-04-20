@@ -128,5 +128,5 @@ def evaluate_jd_matching(folder_path):
         print("LLM Predicted Top 3:", ", ".join(data['llm_top3']))
 
 if __name__ == "__main__":
-    folder_path = "output"  # Change to your folder path
+    folder_path = "/Users/tianhengshi/End-To-End-Resume-ATS-Tracking-LLM-Project-With-Google-Gemini-Pro/output_with_no_major"  # Change to your folder path
     evaluate_jd_matching(folder_path)
