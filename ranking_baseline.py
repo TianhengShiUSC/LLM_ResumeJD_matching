@@ -47,7 +47,7 @@ def evaluate_jd_matching(folder_path):
     llm_results = defaultdict(dict)
     for file_name in os.listdir(folder_path):
         if file_name.endswith(".json"):
-            match = re.match(r'(JD\d+)_resume(\d+)\.json', file_name)
+            match = re.match(r'(JD\d+)_resume(\d+)', file_name)
             if match:
                 jd_number, resume_num = match.groups()
                 resume_id = f"resume{resume_num}"
@@ -57,10 +57,17 @@ def evaluate_jd_matching(folder_path):
                     data = json.load(f)
                     response_text = data.get("response", "")
                     
+                    # Debugging print to show the raw JSON response
+                    print(f"Processing file: {file_name}")
+                    print(f"Response Text: {response_text[:300]}...")  # Preview first 300 chars
+                    
                     match_percentage = re.search(r'"JD Match":\s*"?(\d+)%?', response_text)
                     if match_percentage:
                         match_value = int(match_percentage.group(1)) / 100
+                        print(f"Match percentage found: {match_value}")
                         llm_results[jd_number][resume_id] = match_value
+                    else:
+                        print(f"JD Match not found for {file_name}")
 
     # Evaluate performance for each JD
     evaluation_results = {}
@@ -113,7 +120,7 @@ def evaluate_jd_matching(folder_path):
     print("="*80)
     print(f"{'JD':<6} {'Title':<25} {'Resumes':>8} {'Spearman':>10} {'NDCG':>8} {'Top3 Agreement':>15}")
     
-    for jd in sorted(evaluation_results.keys(), key=lambda x: int(x[2:])):
+    for jd in sorted(evaluation_results.keys(), key=lambda x: int(x[2:])): 
         data = evaluation_results[jd]
         print(f"{jd:<6} {data['title'][:25]:<25} {data['num_resumes']:>8} "
               f"{data['spearman']:>10.2f} {data['ndcg']:>8.2f} "
@@ -121,7 +128,7 @@ def evaluate_jd_matching(folder_path):
 
     # Print detailed comparison for each JD
     print("\n\nDETAILED COMPARISON BY JD:")
-    for jd in sorted(evaluation_results.keys(), key=lambda x: int(x[2:])):
+    for jd in sorted(evaluation_results.keys(), key=lambda x: int(x[2:])): 
         data = evaluation_results[jd]
         print(f"\n{jd} ({data['title']}) - Spearman: {data['spearman']:.2f}, NDCG: {data['ndcg']:.2f}")
         print("Ground Truth Top 3:", ", ".join(data['ground_truth_top3']))
